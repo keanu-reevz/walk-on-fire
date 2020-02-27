@@ -8,7 +8,6 @@ arg1.gsub!("\n", " ")
 # Replace "\n" by " "
 arg1 = arg1.split("\s")
 # Split at " " + delete " "
-
 arg2 = File.read(ARGV[1])
 arg2.gsub!("\n", " ")
 arg2 = arg2.split("\s")
@@ -33,14 +32,12 @@ the first sharing value.
 l = arg1[0].length
 match = false
 
-until match
-  arg2.each_index do |x|
-    arg2[x].each_index do |y|
-      if arg2[x][y...y+l] == arg1[0]
-        match = true
-        print y, ",", x;
-      end
-      break if match == true
+arg2.each_index do |x|
+  arg2[x].each_index do |y|
+    if arg2[x][y...y+l] == arg1[0]
+      match = true
+      print y, ",", x;
     end
+    break if match == true
   end
 end
